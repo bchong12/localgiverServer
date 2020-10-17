@@ -34,9 +34,15 @@ app.get("/", (req, res) => {
   });
 });
 
+//auth routes
 app.post("/auth/login", authCtrl.login);
 app.post("/auth/register", authCtrl.register);
 app.post("/auth/logout", authCtrl.logout);
+app.post("/yo", (req, res) => {
+  res.send({
+    yo: "it worked",
+  });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server connected on ${PORT}`));
