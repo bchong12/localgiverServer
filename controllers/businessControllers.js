@@ -58,4 +58,12 @@ module.exports = {
     const result = await db.get_cart();
     res.status(200).send(result);
   },
+  deleteItem: async (req, res) => {
+    const db = req.app.get("db");
+    const { itemId } = req.body;
+
+    db.delete_item({ itemId });
+
+    res.sendStatus(200);
+  },
 };

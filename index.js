@@ -42,6 +42,7 @@ app.get("/api/business", businessCtrl.getBusinesses);
 //cart routes
 app.post("/api/cart/new", businessCtrl.addCart);
 app.get("/api/cart", businessCtrl.getCart);
+app.delete("/api/cart", businessCtrl.deleteItem);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server connected on ${PORT}`));
