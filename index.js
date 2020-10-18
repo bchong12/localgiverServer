@@ -4,6 +4,7 @@ const massive = require("massive");
 const cors = require("cors");
 const keys = require("./keys");
 const authCtrl = require("./controllers/authControllers");
+const businessCtrl = require("./controllers/businessControllers");
 
 const app = express();
 
@@ -28,21 +29,15 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.send({
-    hi: "bye",
-  });
-});
-
 //auth routes
 app.post("/auth/login", authCtrl.login);
 app.post("/auth/register", authCtrl.register);
 app.post("/auth/logout", authCtrl.logout);
-app.post("/yo", (req, res) => {
-  res.send({
-    yo: "it worked",
-  });
-});
+
+//business routes
+app.post("/api/business/new", businessCtrl.addBusiness);
+app.post("/api/business/:id/newDeal", businessCtrl.addDeals);
+app.get("/api/business", businessCtrl.getBusinesses);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server connected on ${PORT}`));
