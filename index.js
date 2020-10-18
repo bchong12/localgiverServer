@@ -3,6 +3,7 @@ const session = require("express-session");
 const massive = require("massive");
 const cors = require("cors");
 const keys = require("./keys");
+const path = require("path");
 const authCtrl = require("./controllers/authControllers");
 const businessCtrl = require("./controllers/businessControllers");
 
@@ -28,6 +29,12 @@ app.use(
     secret: keys.sessionSecret,
   })
 );
+
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 //auth routes
 app.post("/auth/login", authCtrl.login);
