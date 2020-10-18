@@ -1,4 +1,1 @@
-delete from cart
-where item_id = ${itemId};
-
-select * from cart;
+delete from cart;
