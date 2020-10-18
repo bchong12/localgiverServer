@@ -56,7 +56,6 @@ module.exports = {
     const db = req.app.get("db");
 
     const result = await db.get_cart();
-
-    res.status(200).send(result[0]);
+    res.status(200).send(result);
   },
 };
