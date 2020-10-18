@@ -25,3 +25,9 @@ create table deals (
     title text,
     price integer
 );
+
+create table cart (
+    item_id serial primary key,
+    title text,
+    price integer
+);

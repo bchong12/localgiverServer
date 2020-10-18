@@ -44,4 +44,19 @@ module.exports = {
 
     res.status(200).send(result[0]);
   },
+  addCart: async (req, res) => {
+    const db = req.app.get("db");
+    const { title, price } = req.body;
+
+    const result = await db.add_item({ title, price });
+
+    res.status(200).send(result[0]);
+  },
+  getCart: async (req, res) => {
+    const db = req.app.get("db");
+
+    const result = await db.get_cart();
+
+    res.status(200).send(result[0]);
+  },
 };
